@@ -553,6 +553,8 @@ preference_settings! {
     timeline_left_width: f32 = 130.0, PAGE_INTERFACE;
     /// Share the browser column, vertically, instead of a separate left column.
     timeline_under_browser: bool = false, PAGE_INTERFACE;
+    /// In the shared browser column, put the history above the browser instead of below it.
+    timeline_above_browser: bool = false, PAGE_INTERFACE;
     /// Fold the shared-column history to its header.
     timeline_collapsed: bool = false, PAGE_INTERFACE;
     /// Whether the browser beside the vertical history is collapsed to its rail.
@@ -3185,6 +3187,7 @@ mod tests {
             ("ribbon_labels", json!(false), PAGE_INTERFACE),
             ("timeline_left", json!(true), PAGE_INTERFACE),
             ("timeline_under_browser", json!(true), PAGE_INTERFACE),
+            ("timeline_above_browser", json!(true), PAGE_INTERFACE),
             ("browser_float", json!(true), PAGE_INTERFACE),
             ("color_vision", json!("protan"), PAGE_INTERFACE),
             ("nav", json!("blender"), PAGE_NAVIGATION),
