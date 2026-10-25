@@ -67,6 +67,7 @@ fn an_empty_sketch_keeps_its_planes_origin() {
 fn the_viewport_menu_looks_at_a_planar_face() {
     let mut h = Harness::new();
     h.app.home.open = false;
+    h.app.preferences.look_at_anim = false;
     h.app.run("solid.box", json!({"length": 40, "width": 30, "height": 10})).unwrap();
     let body = h.app.session.model.state().bodies[0].clone();
     let face = body.body.faces(0.01).unwrap().into_iter().find(|f| f.plane_normal.is_some_and(|n| n.z > 0.99)).unwrap();
@@ -82,6 +83,7 @@ fn the_viewport_menu_looks_at_a_planar_face() {
 fn the_viewport_menu_looks_at_a_plane_under_the_cursor() {
     let mut h = Harness::new();
     h.app.home.open = false;
+    h.app.preferences.look_at_anim = false;
     h.app.menu.plane = Some("XZ".to_string());
     let items = crate::context_menu::items(&h.app, &crate::context_menu::Target::Viewport);
     let look = items.iter().find(|i| i.id == "ui.lookAt").cloned().expect("a plane's menu has Look At");
